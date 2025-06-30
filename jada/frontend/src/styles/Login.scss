@@ -1,0 +1,150 @@
+@use '../styles/theme';
+
+.login-root {
+  min-height: 100vh;
+  background: theme.$color-background;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: theme.$spacing-md theme.$spacing-lg;
+}
+
+.login-logo {
+  width: 28px;
+  height: 28px;
+  background: theme.$color-primary;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.login-help {
+  color: theme.$color-help;
+  font-size: theme.$font-size-label;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 4px;
+}
+
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  background: theme.$color-card;
+  border-radius: 12px;
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.25);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  min-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-title {
+  color: theme.$color-text;
+  font-size: theme.$font-size-title;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: theme.$spacing-sm;
+}
+
+.login-subtitle {
+  color: theme.$color-text-secondary;
+  font-size: theme.$font-size-subtitle;
+  text-align: center;
+  margin-bottom: theme.$spacing-lg;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: theme.$spacing-md;
+}
+
+.login-label {
+  color: theme.$color-text-secondary;
+  font-size: theme.$font-size-label;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  margin-top: theme.$spacing-sm;
+}
+
+.login-input {
+  background: theme.$color-input-bg;
+  border: none;
+  border-bottom: 1px solid theme.$color-input-border;
+  color: theme.$color-text;
+  font-size: theme.$font-size-input;
+  padding: 0.75rem 0 0.5rem 0;
+  outline: none;
+  margin-bottom: theme.$spacing-sm;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-bottom: 1.5px solid theme.$color-primary;
+  }
+}
+
+.login-forgot {
+  color: theme.$color-help;
+  font-size: theme.$font-size-label;
+  text-align: right;
+  margin-bottom: theme.$spacing-md;
+  cursor: pointer;
+}
+
+.login-submit {
+  background: theme.$color-primary;
+  color: theme.$color-card;
+  font-size: theme.$font-size-button;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.9rem 0;
+  margin-top: theme.$spacing-sm;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: theme.$color-primary;
+    // You can use a custom function or mixin for lighten if needed
+  }
+}
+
+.login-encryption {
+  color: theme.$color-encryption;
+  font-size: theme.$font-size-label;
+  text-align: center;
+  margin-top: theme.$spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.login-footer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: theme.$spacing-md;
+}
+
+.login-status {
+  color: theme.$color-status;
+  font-size: theme.$font-size-label;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

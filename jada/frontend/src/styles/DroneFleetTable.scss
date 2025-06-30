@@ -1,0 +1,214 @@
+@use './theme';
+
+.drone-fleet-table {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: theme.$spacing-md;
+    
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      color: theme.$color-text;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: theme.$spacing-sm;
+    }
+  }
+  
+  .filter-button {
+    background-color: transparent;
+    border: 1px solid theme.$color-input-border;
+    color: theme.$color-text;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    
+    &:hover {
+      border-color: theme.$color-primary;
+    }
+  }
+  
+  .add-drone-button {
+    background-color: theme.$color-primary;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    &:hover {
+      background-color: darken(theme.$color-primary, 5%);
+    }
+  }
+  
+  .loading {
+    padding: theme.$spacing-md;
+    text-align: center;
+    color: theme.$color-text-secondary;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+    }
+    
+    th {
+      font-weight: 500;
+      color: theme.$color-text-secondary;
+      font-size: 0.9rem;
+      border-bottom: 1px solid theme.$color-input-border;
+    }
+    
+    tbody tr {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+  
+  .drone-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    .drone-icon {
+      font-size: 1.2rem;
+    }
+    
+    .drone-details {
+      display: flex;
+      flex-direction: column;
+      
+      .drone-name {
+        font-weight: 500;
+      }
+      
+      .drone-id {
+        font-size: 0.8rem;
+        color: theme.$color-text-secondary;
+      }
+    }
+  }
+  
+  // Status indicator styles
+  .status-indicator {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    
+    &.active {
+      background-color: rgba(25, 226, 140, 0.1);
+      color: theme.$color-primary;
+    }
+    
+    &.idle {
+      background-color: rgba(255, 193, 7, 0.1);
+      color: #ffc107;
+    }
+    
+    &.charging {
+      background-color: rgba(0, 123, 255, 0.1);
+      color: #007bff;
+    }
+    
+    &.maintenance {
+      background-color: rgba(255, 107, 107, 0.1);
+      color: #ff6b6b;
+    }
+  }
+  
+  // Battery indicator styles
+  .battery-indicator {
+    width: 100%;
+    position: relative;
+    
+    .battery-level {
+      height: 8px;
+      background-color: theme.$color-primary;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    
+    span {
+      font-size: 0.8rem;
+      color: theme.$color-text-secondary;
+    }
+  }
+  
+  // Signal indicator styles
+  .signal-indicator {
+    width: 100%;
+    position: relative;
+    
+    .signal-level {
+      height: 8px;
+      background-color: #007bff;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    
+    span {
+      font-size: 0.8rem;
+      color: theme.$color-text-secondary;
+    }
+  }
+  
+  // Action button styles
+  .action-button {
+    background-color: transparent;
+    border: 1px solid theme.$color-input-border;
+    color: theme.$color-text;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    
+    &:hover {
+      border-color: theme.$color-primary;
+    }
+    
+    &.view {
+      color: #007bff;
+      border-color: rgba(0, 123, 255, 0.3);
+      
+      &:hover {
+        border-color: #007bff;
+        background-color: rgba(0, 123, 255, 0.1);
+      }
+    }
+    
+    &.edit {
+      color: theme.$color-primary;
+      border-color: rgba(25, 226, 140, 0.3);
+      
+      &:hover {
+        border-color: theme.$color-primary;
+        background-color: rgba(25, 226, 140, 0.1);
+      }
+    }
+  }
+}

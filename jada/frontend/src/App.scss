@@ -1,0 +1,45 @@
+@use "./styles/theme.scss";
+
+*,
+*:after,
+*:before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+  background-color: #000;
+  color: #fff;
+}
+
+
+.sidebar_space_wrapper{
+  padding-left: 280px;
+}
+
+.drone_management_container{
+    flex: 1;
+    padding: 1rem 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: theme.$color-background;
+    color: theme.$color-text;
+    position: relative;
+    overflow: hidden;
+}
+
+.leaflet-control-zoom{
+  display: none !important;
+}
+
+.load_map_route{
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 1rem;
+  padding-top: 1rem;
+  gap: 0.5rem;
+}

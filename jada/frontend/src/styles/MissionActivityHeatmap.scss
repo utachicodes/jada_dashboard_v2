@@ -1,0 +1,98 @@
+@use './theme';
+@use './mixins' as *;
+
+.heatmap-container {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+  margin-bottom: theme.$spacing-md;
+  color: theme.$color-text;
+}
+
+.heatmap-title {
+  font-size: theme.$font-size-subtitle;
+  font-weight: 500;
+  margin-bottom: theme.$spacing-md;
+  color: theme.$color-text-secondary;
+}
+
+.heatmap-graph-wrapper {
+  display: flex;
+  height: 160px;
+  margin-bottom: theme.$spacing-sm;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(to right, #555 1px, transparent 1px),
+      linear-gradient(to bottom, #555 1px, transparent 1px);
+    background-size: calc(100% / 8) 25%;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.heatmap-y-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  padding-right: theme.$spacing-sm;
+  color: theme.$color-text-secondary;
+  font-size: 0.75rem;
+}
+
+.heatmap-svg-wrapper {
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+.heatmap-x-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  color: theme.$color-text-secondary;
+  font-size: 0.75rem;
+}
+
+.heatmap-legend {
+  display: flex;
+  justify-content: center;
+  margin-top: theme.$spacing-sm;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #22d3ee;
+
+    .legend-color {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #22d3ee;
+      margin-right: 6px;
+    }
+  }
+}
+
+// Optional responsive adjustments
+@include respond(md) {
+  .heatmap-title {
+    font-size: 0.9rem;
+  }
+}

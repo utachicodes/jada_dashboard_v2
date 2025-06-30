@@ -1,0 +1,1269 @@
+@use './theme';
+@use './mixins' as *;
+
+.dashboard-root {
+  display: flex;
+  min-height: 100vh;
+  background-color: theme.$color-background;
+  color: theme.$color-text;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-sidebar {
+  z-index: 1000;
+  width: 260px;
+  background-color: theme.$color-card;
+  padding: theme.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  position: fixed;
+  height: 100dvh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dashboard-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: theme.$spacing-lg;
+  padding: theme.$spacing-sm 0;
+  color: theme.$color-primary;
+  display: flex;
+  align-items: center;
+  gap: theme.$spacing-sm;
+  
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+}
+
+
+.sidebar-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: theme.$spacing-sm 0;
+  
+  &:hover h3 {
+    color: theme.$color-primary;
+  }
+}
+
+.sidebar-title {
+  font-size: 0.75rem;
+  color: theme.$color-text-secondary;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding-left: theme.$spacing-sm;
+  margin-top: theme.$spacing-sm;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: theme.$spacing-sm theme.$spacing-sm;
+  color: theme.$color-text;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-weight: 500;
+
+  &:hover {
+    color: theme.$color-primary;
+    background-color: rgba(25, 226, 140, 0.05);
+    transform: translateX(2px);
+  }
+
+  &.active {
+    color: theme.$color-primary;
+    background-color: rgba(25, 226, 140, 0.1);
+    font-weight: 600;
+  }
+}
+
+.sidebar-icon {
+  margin-right: theme.$spacing-sm;
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: theme.$spacing-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: theme.$spacing-md theme.$spacing-lg;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: theme.$spacing-lg;
+}
+
+.header-welcome {
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: theme.$color-text-secondary;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: theme.$spacing-md;
+}
+
+.search-bar {
+  position: relative;
+  width: 300px;
+
+  input {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: theme.$color-input-bg;
+    border: 1px solid theme.$color-input-border;
+    border-radius: 4px;
+    color: theme.$color-text;
+    font-size: 0.9rem;
+
+    &:focus {
+      outline: none;
+      border-color: theme.$color-primary;
+    }
+  }
+
+  .search-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: theme.$color-text-secondary;
+    cursor: pointer;
+  }
+}
+
+.notification-bell {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: theme.$spacing-sm;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+}
+
+.stat-card {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.stat-title {
+  font-size: 0.9rem;
+  color: theme.$color-text-secondary;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.stat-change {
+  font-size: 0.8rem;
+
+  &.positive {
+    color: theme.$color-primary;
+  }
+
+  &.negative {
+    color: #ff6b6b;
+  }
+}
+
+.mission-tabs {
+  display: flex;
+  border-bottom: 1px solid theme.$color-input-border;
+  padding: 1rem !important;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: relative;
+  background-color: theme.$color-card;
+}
+
+.mission-tabs-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: theme.$spacing-md;
+  color: theme.$color-primary; // Default text color
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+
+  svg, .icon {
+    color: theme.$color-pdf;
+    fill: theme.$color-text;
+    display: flex;
+    align-items: center;
+  }
+
+  // Style buttons
+  button {
+    color: theme.$color-text;
+    background: theme.$color-json;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4em 1em;
+    cursor: pointer;
+  }
+
+  .view-toggle {
+    display: flex;
+    gap: theme.$spacing-xs;
+  }
+}
+
+.mission-tab {
+  padding: theme.$spacing-sm theme.$spacing-md;
+  cursor: pointer;
+  color: theme.$color-text-secondary;
+  font-size: 0.9rem;
+  position: relative;
+
+  &.active {
+    color: theme.$color-primary;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: theme.$color-primary;
+    }
+  }
+}
+
+.create-project-button {
+  margin-left: auto;
+  background-color: theme.$color-primary;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(25, 226, 140, 0.2);
+  margin-bottom: 0.4rem;
+
+  &:hover {
+    background-color: darken(theme.$color-primary, 5%);
+  }
+}
+
+.filter-button {
+  margin-left: auto;
+  background-color: transparent;
+  border: 1px solid theme.$color-input-border;
+  color: theme.$color-text;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+
+  &:hover {
+    border-color: theme.$color-primary;
+  }
+}
+
+.mission-activity {
+  margin-bottom: theme.$spacing-lg;
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: theme.$spacing-sm;
+}
+
+.year-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.year-select {
+  background-color: theme.$color-input-bg;
+  border: 1px solid theme.$color-input-border;
+  border-radius: 4px;
+  color: theme.$color-text;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+
+  &:focus {
+    outline: none;
+    border-color: theme.$color-primary;
+  }
+}
+
+.year-nav-button {
+  background-color: transparent;
+  border: 1px solid theme.$color-input-border;
+  color: theme.$color-text;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    border-color: theme.$color-primary;
+    color: theme.$color-primary;
+  }
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.activity-legend {
+  display: flex;
+  gap: theme.$spacing-md;
+  margin-bottom: theme.$spacing-sm;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: theme.$color-text-secondary;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+
+  &.no-missions {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &.missions-1-3 {
+    background-color: rgba(25, 226, 140, 0.3);
+  }
+
+  &.missions-4-plus {
+    background-color: theme.$color-primary;
+  }
+
+  &.failed-missions {
+    background-color: rgba(255, 107, 107, 0.8);
+  }
+
+  &.mixed-results {
+    background-color: rgba(255, 193, 7, 0.8);
+  }
+}
+
+.month-labels {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-left: 30px;
+  margin-bottom: 4px;
+}
+
+.month-label {
+  font-size: 0.7rem;
+  color: theme.$color-text-secondary;
+  text-align: center;
+}
+
+.heatmap-container_gridd {
+  display: flex;
+  margin-top: theme.$spacing-sm;
+  height: fit-content;
+}
+
+.day-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 8px;
+  height: 119px;
+}
+
+.day-label {
+  font-size: 0.7rem;
+  color: theme.$color-text-secondary;
+  height: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.heatmap-row {
+  display: flex;
+  gap: 4px; // Increased from 3px for more consistent spacing
+  height: 14px;
+  margin-bottom: 4px; // Added to ensure vertical spacing is consistent
+}
+
+.heatmap-cell {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.05);
+
+ @include respond(md) {
+    width: 20px;
+    height: 20px;
+  }
+
+   @include respond(sm) {
+    width: 14.5px;
+    height: 14.5px;
+  }
+
+  &.month-end {
+    // margin-right: 6px;
+  }
+
+  &.level-0 {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.level-1 {
+    background-color: rgba(25, 226, 140, 0.2);
+  }
+
+  &.level-2 {
+    background-color: rgba(25, 226, 140, 0.4);
+  }
+
+  &.level-3 {
+    background-color: rgba(25, 226, 140, 0.6);
+  }
+
+  &.level-4 {
+    background-color: rgba(25, 226, 140, 0.8);
+  }
+}
+
+.activity-summary {
+  display: flex;
+  gap: theme.$spacing-md;
+  margin-top: theme.$spacing-md;
+  flex-wrap: wrap;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: theme.$color-text;
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: theme.$color-text-secondary;
+}
+
+
+.create-mission-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  width: 600px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: theme.$spacing-lg;
+
+  h2 {
+    margin-bottom: theme.$spacing-md;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
+
+.mission-form {
+  display: flex;
+  flex-direction: column;
+  gap: theme.$spacing-md;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 0.9rem;
+    color: theme.$color-text-secondary;
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: theme.$color-input-bg;
+    border: 1px solid theme.$color-input-border;
+    border-radius: 4px;
+    padding: 10px 12px;
+    color: theme.$color-text;
+    font-size: 0.9rem;
+
+    &:focus {
+      outline: none;
+      border-color: theme.$color-primary;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  select[multiple] {
+    min-height: 100px;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: theme.$spacing-md;
+  margin-top: theme.$spacing-sm;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 1px solid theme.$color-input-border;
+  color: theme.$color-text;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover {
+    border-color: theme.$color-text;
+  }
+}
+
+.submit-button {
+  background-color: theme.$color-primary;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  &:hover {
+    background-color: darken(theme.$color-primary, 5%);
+  }
+}
+
+.monthly_mission_grid {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  gap: 0.2rem; // Increased from 0.1rem for more visible and consistent spacing
+}
+
+.heatmap-grid{
+  display: flex;
+  justify-content: flex-start; // Changed from space-between to ensure consistent spacing
+  gap: 0.25rem; // Added explicit gap instead of relying on space-between
+  width: 100%;
+}
+
+/* Projects Table Styles */
+.mission-projects {
+  margin-bottom: theme.$spacing-lg;
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.projects-table-container {
+  overflow-x: auto;
+  margin-bottom: theme.$spacing-md;
+  width: 100%;
+  background-color: theme.$color-card;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius: 8px;
+}
+
+.projects-container {
+  width: 100%;
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  margin-bottom: theme.$spacing-md;
+}
+
+.view-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-right: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.view-toggle {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.view-toggle-btn {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: theme.$color-text-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  &.active {
+    background-color: theme.$color-primary;
+    color: #fff;
+  }
+  
+  &:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.projects-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.mission-card {
+  background-color: #232325;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.mission-card-header {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: none;
+  background-color: transparent;
+}
+
+.mission-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.mission-card-content {
+  padding: 0 20px 16px;
+  flex-grow: 1;
+  background: transparent;
+}
+
+.mission-detail {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  border-bottom: none;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.detail-label {
+  color: theme.$color-text-secondary;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.detail-value {
+  color: theme.$color-text-primary;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: right;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: theme.$color-text-secondary;
+  font-size: 0.9rem;
+}
+
+.detail-icon {
+  color: theme.$color-text-secondary;
+  font-size: 0.9rem;
+}
+
+.mission-card-footer {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.view-button {
+  background-color: theme.$color-primary;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  justify-content: center;
+  
+  
+  &:hover {
+    background-color: darken(theme.$color-primary, 5%);
+  }
+}
+
+.drones-table{
+  width: 100%;
+    th, td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  width: 100%;
+  
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+  
+  th {
+    color: theme.$color-text-secondary;
+    font-weight: 500;
+    border-bottom: 1px solid theme.$color-input-border;
+  }
+  
+  tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+  
+  td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  align-self: flex-start;
+  
+    &.in-progress {
+      background-color: rgba(59, 130, 246, 0.9); // Blue
+      color: #fff;
+    }
+
+    &.completed {
+      background-color: rgba(34, 197, 94, 0.9); // Green
+      color: #fff;
+    }
+
+    &.planned {
+      background-color: rgba(255, 193, 7, 0.9); // Amber/Yellow
+      color: #000;
+    }
+
+    &.aborted {
+      background-color: rgba(244, 63, 94, 0.9); // Red
+      color: #fff;
+    }
+
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  
+  &.low {
+    background-color: rgba(25, 226, 140, 0.1);
+    color: theme.$color-primary;
+  }
+  
+  &.medium {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+  }
+  
+  &.high {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+  }
+  
+  &.critical {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+  }
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: theme.$color-text-secondary;
+  transition: color 0.2s;
+  
+  &:hover {
+    color: theme.$color-primary;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: theme.$spacing-md;
+}
+
+.pagination-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: theme.$color-input-bg;
+  border: 1px solid theme.$color-input-border;
+  border-radius: 4px;
+  color: theme.$color-text;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    border-color: theme.$color-primary;
+    color: theme.$color-primary;
+  }
+  
+  &.active {
+    background-color: rgba(25, 226, 140, 0.1);
+    border-color: theme.$color-primary;
+    color: theme.$color-primary;
+  }
+}
+
+// Drone Fleet Table Styles
+.drone-fleet-table {
+  margin-bottom: theme.$spacing-lg;
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: theme.$spacing-md;
+}
+
+.header-actions {
+  display: flex;
+  gap: theme.$spacing-sm;
+}
+
+.filter-button {
+  background-color: transparent;
+  border: 1px solid theme.$color-input-border;
+  color: theme.$color-text;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  
+  &:hover {
+    border-color: theme.$color-primary;
+  }
+}
+
+.add-drone-button {
+  background-color: theme.$color-primary;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  
+  &:hover {
+    background-color: darken(theme.$color-primary, 5%);
+  }
+}
+
+.drone-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drone-icon {
+  font-size: 1.2rem;
+}
+
+.drone-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.drone-name {
+  font-weight: 500;
+}
+
+.drone-id {
+  font-size: 0.8rem;
+  color: theme.$color-text-secondary;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  
+  &.low {
+    background-color: #ff6b6b;
+  }
+  
+  &.medium {
+    background-color: #ffc107;
+  }
+  
+  &.high {
+    background-color: theme.$color-primary;
+  }
+  
+  &.signal {
+    background-color: #007bff;
+  }
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: theme.$color-text-secondary;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+// Weekly Mission Activity Styles
+.dashboard-analytics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+}
+
+.weekly-mission-activity {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  margin-bottom: theme.$spacing-sm;
+  padding-bottom: theme.$spacing-sm;
+  border-bottom: 1px solid theme.$color-input-border;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bars-container {
+  display: flex;
+  gap: 4px;
+  height: 100%;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: center;
+}
+
+.mission-bar {
+  width: 20px;
+  background-color: #007bff;
+  border-radius: 2px 2px 0 0;
+}
+
+.flight-hours-bar {
+  width: 20px;
+  background-color: theme.$color-primary;
+  border-radius: 2px 2px 0 0;
+}
+
+.day-label {
+  // margin-top: 8px;
+  font-size: 0.8rem;
+  color: theme.$color-text-secondary;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: theme.$spacing-md;
+  margin-top: theme.$spacing-sm;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  
+  &.mission {
+    background-color: #007bff;
+  }
+  
+  &.flight-hours {
+    background-color: theme.$color-primary;
+  }
+}
+
+// Resource Allocation Styles
+.resource-allocation {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+}
+
+.allocation-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: theme.$spacing-md;
+}
+
+.allocation-section {
+  display: flex;
+  flex-direction: column;
+  gap: theme.$spacing-sm;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: theme.$spacing-sm;
+}
+
+.allocation-item {
+  margin-bottom: theme.$spacing-sm;
+}
+
+.allocation-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.member-avatar {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.allocation-percentage {
+  font-weight: 500;
+}
+
+.allocation-bar {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.allocation-fill {
+  height: 100%;
+  border-radius: 4px;
+  background-color: #007bff;
+  
+  &.workload {
+    background-color: theme.$color-primary;
+  }
+}
+
+
+
+.dashboard-analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-analytics-column {
+    display: flex;
+    flex-direction: column;
+    gap: theme.$spacing-md;
+  }
+}
+
+// Update these classes to ensure proper sizing
+.heatmap-container, .mission-timeline {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.heatmap-graph-wrapper, .chart-container {
+  flex-grow: 1;
+  min-height: 200px;
+}

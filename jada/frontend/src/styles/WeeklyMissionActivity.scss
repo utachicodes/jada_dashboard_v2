@@ -1,0 +1,42 @@
+@use './theme';
+
+.weekly-mission-activity {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+  
+  .activity-header {
+    margin-bottom: theme.$spacing-md;
+    
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+  
+  .chart-wrapper {
+    height: 220px;
+    
+    // Custom styling for Recharts components
+    .recharts-cartesian-grid-horizontal line,
+    .recharts-cartesian-grid-vertical line {
+      stroke: rgba(255, 255, 255, 0.1);
+    }
+    
+    .recharts-tooltip-item-name,
+    .recharts-tooltip-item-value {
+      color: theme.$color-text;
+    }
+    
+    .recharts-default-tooltip {
+      background-color: theme.$color-card !important;
+      border: 1px solid theme.$color-input-border !important;
+    }
+    
+    .recharts-legend-item-text {
+      color: theme.$color-text-secondary !important;
+    }
+  }
+}

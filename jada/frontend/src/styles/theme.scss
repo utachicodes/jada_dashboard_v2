@@ -1,0 +1,50 @@
+// Theme variables
+$color-background: #18181a;
+$color-card: #232325;
+$color-primary: #19e28c;
+$color-text: #fff;
+$color-text-secondary: #b3b3b3;
+$color-input-bg: #232325;
+$color-input-border: #333;
+$color-help: #b3b3b3;
+$color-status: #19e28c;
+$color-encryption: #b3b3b3;
+$font-size-title: 2rem;
+$font-size-subtitle: 1rem;
+$font-size-label: 0.85rem;
+$font-size-input: 1rem;
+$font-size-button: 1rem;
+$spacing-lg: 2rem;
+$spacing-md: 1rem;
+$spacing-sm: 0.5rem; 
+$spacing-xs: 0.25rem; // Added spacing variable
+$color-text-primary: #b3b3b3;
+
+
+$color-text-white: #ffffff;
+// Additional color variables for mission summary
+$color-danger: #ff4c4c; // Used for aborted missions and error logs
+$color-warning: #ffb74d; // Used for warnings and star ratings
+$color-info: #4dabff; 
+
+$color-pdf: #007BFF; 
+$color-json: #28A745;
+// Used for info logs and JSON export
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 576px) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: 768px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: 992px) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: 1200px) { @content; }
+  }
+}

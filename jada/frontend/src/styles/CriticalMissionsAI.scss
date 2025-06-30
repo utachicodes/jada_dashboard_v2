@@ -1,0 +1,121 @@
+@use './theme';
+
+.critical-ai-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: theme.$spacing-md;
+  margin-bottom: theme.$spacing-lg;
+  
+  @include theme.respond(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.critical-missions,
+.ai-recommendations {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  padding: theme.$spacing-md;
+  
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: theme.$spacing-md;
+  }
+}
+
+.missions-list,
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: theme.$spacing-sm;
+}
+
+.mission-card_info,
+.recommendation-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: theme.$spacing-sm;
+  display: flex;
+  justify-content: space-between;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+
+.mission-info,
+.recommendation-content {
+  flex: 1;
+}
+
+.mission-name,
+.recommendation-action {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.mission-location {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: theme.$color-text-secondary;
+  
+  .location-icon {
+    margin-right: 4px;
+  }
+}
+
+.recommendation-reason {
+  font-size: 0.85rem;
+  color: theme.$color-text-secondary;
+  margin: 0;
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  
+  &.risk-critical {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+  }
+  
+  &.risk-high {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+  }
+  
+  &.risk-medium {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+  }
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  
+  &.priority-high {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+  }
+  
+  &.priority-medium {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+  }
+  
+  &.priority-low {
+    background-color: rgba(25, 226, 140, 0.1);
+    color: theme.$color-primary;
+  }
+}

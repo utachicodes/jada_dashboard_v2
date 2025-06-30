@@ -1,0 +1,219 @@
+@use './theme';
+
+.mission-creator {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: theme.$color-background;
+  color: theme.$color-text;
+}
+
+.mission-creator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: theme.$spacing-md theme.$spacing-lg;
+  background-color: theme.$color-card;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: theme.$spacing-md;
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+  
+  .back-button {
+    display: flex;
+    align-items: center;
+    gap: theme.$spacing-sm;
+    background: none;
+    border: none;
+    color: theme.$color-text;
+    cursor: pointer;
+    padding: theme.$spacing-sm theme.$spacing-md;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  .step-indicator {
+    display: flex;
+    gap: theme.$spacing-lg;
+    
+    .step {
+      padding: theme.$spacing-sm theme.$spacing-md;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: theme.$color-text-secondary;
+      position: relative;
+      
+      
+      &.active {
+        color: theme.$color-primary;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.mission-creator-content {
+  flex: 1;
+//   padding: theme.$spacing-lg;
+  overflow-y: auto;
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: theme.$spacing-lg;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+
+.mission-basic-info,
+.mission-drone-selection {
+  max-width: 800px;
+  margin: 4rem auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: theme.$spacing-md;
+
+  label {
+    font-size: 0.95rem;
+    color: theme.$color-text;
+    font-weight: 500;
+  }
+  
+  input, select, textarea {
+    padding: theme.$spacing-sm theme.$spacing-md;
+    background-color: theme.$color-input-bg;
+    border: 1px solid theme.$color-input-border;
+    border-radius: 4px;
+    color: theme.$color-text;
+    font-size: 0.95rem;
+    
+    &:focus {
+      border-color: theme.$color-primary;
+      outline: none;
+    }
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  select[multiple] {
+    min-height: 120px;
+  }
+  
+  .help-text {
+    font-size: theme.$font-size-label;
+    color: theme.$color-help;
+    margin-top: 4px;
+  }
+}
+
+.error-message {
+  color: theme.$color-danger;
+  font-size: theme.$font-size-label;
+  margin-top: 4px;
+}
+
+.drone-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: theme.$spacing-md;
+  background-color: theme.$color-card;
+  padding: theme.$spacing-md;
+  border-radius: 4px;
+  
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    .spec-label {
+      font-size: theme.$font-size-label;
+      color: theme.$color-text-secondary;
+    }
+    
+    .spec-value {
+      font-weight: 500;
+    }
+  }
+}
+
+.no-drones-message {
+  color: theme.$color-text-secondary;
+  font-style: italic;
+}
+
+.mission-route-planning {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+  & .drone-route-content {
+    display: flex !important;
+    flex: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+}
+
+.mission-creator-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: theme.$spacing-md;
+  padding: theme.$spacing-md theme.$spacing-lg;
+  background-color: theme.$color-card;
+  border-top: 1px solid theme.$color-input-border;
+  
+  button {
+    padding: theme.$spacing-sm theme.$spacing-lg;
+    border-radius: 4px;
+    font-size: theme.$font-size-button;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .prev-button {
+    background-color: transparent;
+    border: 1px solid theme.$color-input-border;
+    color: theme.$color-text;
+    
+    &:hover {
+      border-color: theme.$color-text;
+    }
+  }
+  
+  .next-button, .create-button {
+    background-color: theme.$color-primary;
+    border: none;
+    color: #000;
+    
+    &:hover {
+      background-color: darken(theme.$color-primary, 5%);
+    }
+  }
+}

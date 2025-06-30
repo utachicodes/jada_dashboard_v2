@@ -1,0 +1,120 @@
+@use './theme';
+
+.drone-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.drone-modal {
+  background-color: theme.$color-card;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: theme.$spacing-md;
+    border-bottom: 1px solid theme.$color-input-border;
+    
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: theme.$color-text-secondary;
+      cursor: pointer;
+      
+      &:hover {
+        color: theme.$color-text;
+      }
+    }
+  }
+  
+  form {
+    padding: theme.$spacing-md;
+    
+    .form-group {
+      margin-bottom: theme.$spacing-md;
+      
+      label {
+        display: block;
+        margin-bottom: theme.$spacing-xs;
+        font-size: 0.9rem;
+        color: theme.$color-text-secondary;
+      }
+      
+      input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid theme.$color-input-border;
+        background-color: theme.$color-input-bg;
+        color: theme.$color-text;
+        font-size: 0.9rem;
+        
+        &:focus {
+          border-color: theme.$color-primary;
+          outline: none;
+        }
+        
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: theme.$spacing-sm;
+      margin-top: theme.$spacing-lg;
+      
+      button {
+        padding: 10px 16px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      
+      .cancel-button {
+        background-color: transparent;
+        border: 1px solid theme.$color-input-border;
+        color: theme.$color-text;
+        
+        &:hover {
+          border-color: theme.$color-text;
+        }
+      }
+      
+      .save-button {
+        background-color: theme.$color-primary;
+        border: none;
+        color: #000;
+        
+        &:hover {
+          background-color: darken(theme.$color-primary, 5%);
+        }
+      }
+    }
+  }
+}

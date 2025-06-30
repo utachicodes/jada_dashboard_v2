@@ -1,0 +1,58 @@
+
+@use './theme';
+
+
+  .camera-feed_main_container {
+    position: absolute;
+    height: 300px;
+    width: 350px;
+    background-color: theme.$color-card;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    bottom: 2rem;
+    left: 2rem;
+    padding: 0.5rem;
+    z-index: 999;
+    & header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.2rem;
+        height: fit-content !important;
+    }
+    & .map-control-button{
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        background-color: #232325;
+        border: 1px solid #333;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+      padding: theme.$spacing-sm theme.$spacing-md;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .camera-feed-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1a1a1c;
+    }
+    
+    .camera-placeholder {
+      color: theme.$color-text-secondary;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
